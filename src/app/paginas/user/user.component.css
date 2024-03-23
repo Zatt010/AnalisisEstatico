@@ -1,0 +1,90 @@
+body {
+  background-color: #f0f0f0;
+  color: #000 !important;
+  font-family: Arial, sans-serif;
+}
+
+.user-list {
+  margin-bottom: 20px;
+}
+
+.user-list h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000 !important;
+}
+
+.user-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  margin-bottom: 5px;
+}
+
+.user-list button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #000 !important;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-list button:hover {
+  background-color: #e0e0e0;
+}
+
+.user-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.user-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000 !important;
+}
+
+.user-details .form-group {
+  margin-bottom: 10px;
+}
+
+.user-details label {
+  display: block;
+  font-weight: bold;
+  color: #000 !important;
+}
+
+.user-details input[type="text"],
+.user-details input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #000 !important;
+}
+
+.user-details .buttons {
+  margin-top: 20px;
+}
+
+.user-details button {
+  background-color: #f44336;
+  border: none;
+  border-radius: 3px;
+  color: #eceaea !important;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.user-details button:last-child {
+  background-color: #4caf50;
+}
+
+.user-details button:hover {
+  opacity: 0.8;
+}

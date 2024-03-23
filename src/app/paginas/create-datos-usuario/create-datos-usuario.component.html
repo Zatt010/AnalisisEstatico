@@ -1,0 +1,41 @@
+<p class="create-message">create-datos-usuario works!</p>
+
+<div class="profile-section">
+  <div class="profile-pic">
+    <img src="{{ profilePic }}" alt="Profile Picture" />
+  </div>
+  <div class="profile-pic-options">
+    <div *ngFor="let option of profilePicOptions" (click)="changeProfilePic(option)">
+      <img src="{{ option }}" alt="Profile Picture Option" />
+    </div>
+  </div>
+</div>
+
+<div class="signup-container">
+  <h1>Registrar datos</h1>
+
+  <form [formGroup]="miFormulario" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="nombre_u">Nombre de usuario</label>
+      <input type="text" id="nombre_u" formControlName="nombre_u" required>
+    </div>
+    <div class="form-group">
+      <label for="nombre_com">Nombre completo</label>
+      <input type="text" id="nombre_com" formControlName="nombre_com" required>
+    </div>
+    <div class="form-group">
+      <label for="Fecha_N">Fecha de nacimiento</label>
+      <input type="date" id="Fecha_N" formControlName="Fecha_N" required>
+    </div>
+    <div class="form-group">
+      <label for="ci">CI</label>
+      <input type="text" id="ci" formControlName="ci" required>
+    </div>
+
+    <div class="submit-wrapper">
+      <button type="submit" [disabled]="!miFormulario.valid || isLoading">Registrar datos</button>
+    </div>
+    <p *ngIf="isLoading">Cargando...</p>
+    <p *ngIf="isSuccess">Datos registrados exitosamente.</p>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+<p>user works!</p>
+
+<div class="user-list">
+  <h2>Usuarios-admin-user</h2>
+  <div *ngFor="let group of users">
+    <h3>{{ group.role }}</h3>
+    <ul>
+      <li *ngFor="let user of group.users">
+        <button (click)="selectUser(user)">{{ user.email }}</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="user-details" *ngIf="selectedUser.email">
+  <h2>Detalles del Usuario</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" [(ngModel)]="selectedUser.email" disabled>
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="text" id="password" name="password" [(ngModel)]="selectedUser.password">
+    </div>
+    <div class="form-group">
+      <label for="role">Rol:</label>
+      <select id="role" name="role" [(ngModel)]="selectedUser.role">
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+  </form>
+  <div class="buttons">
+    <button (click)="deleteUser(selectedUser)">Borrar Usuario</button>
+    <button (click)="saveChanges()">Guardar Cambios</button>
+  </div>
+</div>

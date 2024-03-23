@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li><a [routerLink]="['/user', userId, 'home', userId]" routerLinkActive="active">Home</a></li>
+    <li><a [routerLink]="['/user', userId, 'events', userId]" routerLinkActive="active">Eventos</a></li>
+    <li><a [routerLink]="['/user', userId, 'tickets', userId]" routerLinkActive="active">Mis entradas</a></li>
+    <li><a [routerLink]="['/user', userId, 'info', userId]" routerLinkActive="active">Usuario</a></li>
+  </ul>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

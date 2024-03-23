@@ -1,0 +1,56 @@
+/* Para hacer que el header ocupe toda la pantalla sin importar el tamaño */
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f49c7;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: linear-gradient(to right, #0f49c7, #1565c0);
+}
+.header-right i, .header-right span {
+  cursor: pointer;
+}
+
+/* Para alinear el icono de usuario a la derecha */
+.header-right {
+  margin-right: 20px;
+}
+
+/* Para dar estilo al cuerpo de la página */
+.body {
+  padding-top: 100px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.body-right {
+  float: left;
+  width: 40%;
+  font-size: 20px;
+}
+.body h1 {
+  letter-spacing: 2px;
+}
+
+.body-image img {
+  float: right;
+  width: 50%;
+  margin: 0 0 20px 20px;
+}
+
+
+.body-right p {
+  display: inline-block;
+  max-width: 70%;
+}
+

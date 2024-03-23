@@ -1,0 +1,60 @@
+<p>create-event works!</p>
+<form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="categoria">Categoría:</label>
+    <select formControlName="categoria" id="categoria">
+      <option value="Convencion">Convencion</option>
+      <option value="Musica">Musica</option>
+      <option value="Deportes">Deportes</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" formControlName="nombre" id="nombre">
+  </div>
+
+  <div>
+    <label for="fechaHora">Fecha y Hora:</label>
+    <input type="datetime-local" formControlName="fechaHora" id="fechaHora">
+  </div>
+
+  <div>
+    <label for="pais">País:</label>
+    <input type="text" formControlName="pais" id="pais">
+  </div>
+
+  <div>
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" formControlName="ciudad" id="ciudad">
+  </div>
+
+  <div>
+    <label for="lugar">Lugar:</label>
+    <input type="text" formControlName="lugar" id="lugar">
+  </div>
+
+  <div *ngIf="miFormulario.get('categoria')?.value === 'Musica'">
+    <label for="artista">Artista:</label>
+    <input type="text" formControlName="artista" id="artista">
+  </div>
+
+  <div *ngIf="miFormulario.get('categoria')?.value === 'Deportes'">
+    <label for="equipo1">Equipo Local:</label>
+    <input type="text" formControlName="equipo1" id="equipo1">
+
+    <label for="equipo2">Equipo Visitante:</label>
+    <input type="text" formControlName="equipo2" id="equipo2">
+  </div>
+
+  <div class="submit-wrapper">
+    <button [disabled]="isLoading || isSuccess" type="submit">
+      <span *ngIf="!isLoading && !isSuccess">Enviar</span>
+      <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+      <span *ngIf="isSuccess"><i class="fa fa-check"></i></span>
+    </button>
+  </div>
+  <div class="submit-wrapper" style="margin-top: 10px;">
+    <button type="button" (click)="reloadPage()">Recargar</button>
+  </div>
+</form>

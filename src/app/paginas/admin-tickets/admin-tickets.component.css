@@ -1,0 +1,68 @@
+.admin-text {
+  color: black;
+}
+
+.event-container {
+  margin-bottom: 20px;
+}
+
+.event-title {
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.event-date {
+  color: black;
+  font-size: 16px;
+}
+
+.event-location {
+  color: black;
+  font-size: 16px;
+}
+
+.event-artist {
+  color: black;
+  font-size: 16px;
+}
+
+.event-category {
+  color: black;
+  font-size: 16px;
+}
+
+.add-ticket-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.ticket-form {
+  margin-top: 10px;
+}
+
+.form-input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.form-submit-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}

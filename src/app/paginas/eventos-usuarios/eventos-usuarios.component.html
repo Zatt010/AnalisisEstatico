@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="buttons">
+    <button (click)="getEvents()">Principal</button>
+    <button (click)="getEvents('Musica')">Musica</button>
+    <button (click)="getEvents('Deportes')">Deportes</button>
+    <button (click)="getEvents('Convencion')">Convencion</button>
+  </div>
+  <h2>Eventos:</h2>
+  <div>
+    <h2>Carrito de compras</h2>
+    <div *ngFor="let item of cartItems">
+      <h3>{{ item.tipo }}</h3>
+      <p>Precio: {{ item.precio }}</p>
+      <button (click)="removeCartItem(item.ticketID)">Eliminar</button>
+    </div>
+    <div class="buy-button-container"> <!-- Contenedor para el botón Comprar -->
+      <button (click)="checkout()">Comprar</button>
+    </div>
+  </div>
+
+
+
+
+  <ul class="event-list">
+    <li *ngFor="let event of events" class="event-item">
+      <h3>{{ event.nombre }}</h3>
+      <p>{{ event.fechaHora }}</p>
+      <button (click)="showTickets(event)">Show Tickets</button>
+      <div *ngIf="selectedEventId === event.cod_E" class="tickets-container">
+        <h4>Tickets Disponibles:</h4>
+        <ul class="ticket-list">
+          <li *ngFor="let ticket of ticketsAvailable" class="ticket-item">
+            <p>Tipo: {{ ticket.tipo }}</p>
+            <p>Precio: {{ ticket.precio }}</p>
+            <button (click)="buyTicket(ticket); ticketAddedToCart = ticket._id">Comprar Ticket</button>
+            <span *ngIf="ticketAddedToCart === ticket._id" class="success-message">Añadido al carrito</span>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+

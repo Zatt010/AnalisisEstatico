@@ -1,0 +1,169 @@
+.signup-container {
+  background-color: #0f49c7;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.signup-container h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-container label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="password"] {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.signup-container button[type="submit"] {
+  background-color: white;
+  color: #0f49c7;
+  font-size: 1.2rem;
+  padding: 0.7em 2em;
+  border: 3px solid white;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease all;
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
+.signup-container button[type="submit"]:hover {
+  background-color: #0f49c7;
+  color: white;
+}
+
+.signup-container button[type="submit"]:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: rgb(18, 32, 221);
+  z-index: -1;
+}
+
+.signup-container button[type="submit"]:hover:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+/* Estilos para el botón */
+.submit-wrapper {
+  position: relative;
+}
+
+.submit-wrapper button {
+  position: relative;
+}
+
+.submit-wrapper button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 2;
+}
+
+.submit-wrapper button.check:after {
+  content: '\f00c'; /* Código del ícono de check */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+  animation: none;
+}
+
+/* Animación para el ícono de carga */
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+.btn-style {
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid #ff6600;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #ff6600;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.btn-style:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #ff6600;
+  z-index: -1;
+}
+
+.btn-style:hover, .btn-style:focus {
+  color: white;
+}
+
+.btn-style:hover:before, .btn-style:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.btn-style:active {
+  transform: scale(0.9);
+}

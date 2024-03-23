@@ -1,0 +1,17 @@
+<p class="admin-text">admin-tickets works!</p>
+<div *ngFor="let event of events" class="event-container">
+  <h2 class="event-title">{{ event.nombre }}</h2>
+  <p class="event-date">{{ event.fechaHora | date }}</p>
+  <p class="event-location">{{ event.pais }}, {{ event.ciudad }}</p>
+  <p class="event-artist">{{ event.artista }}</p>
+  <p class="event-category">{{ event.categoria }}</p>
+  <button (click)="showTicketForm(event)" class="add-ticket-button">Añadir Ticket</button>
+
+  <div *ngIf="event.showForm" class="ticket-form">
+    <form [formGroup]="miFormulario" (submit)="createTicket(event)">
+      <input type="number" formControlName="precio" placeholder="Precio" class="form-input">
+      <input type="text" formControlName="tipo" placeholder="Tipo" class="form-input">
+      <button type="submit" class="form-submit-button">Guardar</button>
+    </form>
+  </div>
+</div>

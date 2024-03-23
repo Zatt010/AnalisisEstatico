@@ -1,0 +1,125 @@
+.signup-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2533af;
+  border-radius: 5px;
+}
+
+.signup-container h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signup-container form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.signup-container form input[type="text"],
+.signup-container form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signup-container form .submit-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-container form button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.signup-container form button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.signup-container form .fa {
+  margin-right: 5px;
+}
+
+.signup-container form .fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.user-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.user-actions button {
+  background-color: #555;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.user-actions button:hover {
+  background-color: #777;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+form button {
+  background-color: #555;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #777;
+}

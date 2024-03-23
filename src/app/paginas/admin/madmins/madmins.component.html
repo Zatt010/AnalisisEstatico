@@ -1,0 +1,21 @@
+
+<div class="signup-container">
+  <h1>Registrar Admin</h1>
+  <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+    <label>
+      Email:
+      <input type="text" formControlName="email">
+    </label>
+    <label>
+      Password:
+      <input type="password" id="password" formControlName="password" required>
+    </label>
+    <div class="submit-wrapper">
+      <button [disabled]="isLoading || isSuccess" type="submit">
+        <span *ngIf="!isLoading && !isSuccess">Enviar</span>
+        <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+        <span *ngIf="isSuccess"><i class="fa fa-check"></i></span>
+      </button>
+    </div>
+  </form>
+</div>
