@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   z-index: 999;
-  background: linear-gradient(to right, #0f49c7, #1565c0);
+background-image: linear-gradient(to right, #0f49c7, #1565c0);
 }
 .header-right i, .header-right span {
   cursor: pointer;

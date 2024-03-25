@@ -94,7 +94,6 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  cursor: pointer;
 }
 
 button:disabled {
