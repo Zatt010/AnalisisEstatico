@@ -11,6 +11,9 @@ app = Flask(__name__)
 csrf = CSRFProtect()
 csrf.init_app(app)
 
+# constants
+ERROR_USER_NOT_FOUND= {"error": "User not found."}
+
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['TicketMaster']
@@ -31,7 +34,7 @@ def get_user():
         user['_id'] = str(user['_id'])
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
 
 # Ruta para obtener un usuario por email 
 @app.route('/user-by-email', methods=['GET'])
@@ -42,7 +45,7 @@ def get_user_by_email():
         user['_id'] = str(user['_id'])
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
 
 # Ruta para obtener un usuario por email 
 @app.route('/user-by-username', methods=['GET'])
@@ -53,7 +56,7 @@ def get_user_by_user():
         username['_id'] = str(username['_id'])
         return jsonify(username)
     else:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
 
 # Ruta para crear un nuevo usuario
 @app.route('/create', methods=['POST'])
@@ -188,7 +191,7 @@ def get_userid():
         user['_id'] = str(user['_id'])
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
 
 # Ruta para eliminar un usuario existente
 @app.route('/usersd', methods=['DELETE'])
@@ -344,7 +347,7 @@ def get_user_info():
         user['_id'] = str(user['_id'])  # Convertir el campo _id a una cadena
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
 
 # Ruta para actualizar información de un usuario
 @app.route('/Userinfo', methods=['PUT'])
@@ -354,7 +357,7 @@ def update_user_info():
     # Verificar si el usuario existe antes de realizar la actualización
     existing_user = collection1.find_one({'userID': user_id})
     if not existing_user:
-        return jsonify({"error": "User not found."})
+        return jsonify(ERROR_USER_NOT_FOUND)
     # Actualizar los campos con los valores proporcionados en los datos recibidos
     existing_user['profilePic'] = data.get('profilePic', existing_user['profilePic'])
     existing_user['nombre_u'] = data.get('nombre_u', existing_user['nombre_u'])
