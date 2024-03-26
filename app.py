@@ -5,9 +5,11 @@ import pymongo
 from bson.objectid import ObjectId
 from datetime import datetime
 from bson import ObjectId
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
-CORS(app)
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
