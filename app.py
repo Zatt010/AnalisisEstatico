@@ -14,6 +14,8 @@ csrf.init_app(app)
 # constants
 ERROR_USER_NOT_FOUND= {"error": "User not found."}
 DATE_FORMAT = '%Y-%m-%dT%H:%M'
+QUERY_REGEX = "$options"
+REGEX="$regex"
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
@@ -387,10 +389,10 @@ def search_events():
     query = request.args.get('q')
     events = list(collection2.find({
         "$or": [
-            {"nombre": {"$regex": query, "$options": "i"}},
-            {"pais": {"$regex": query, "$options": "i"}},
-            {"ciudad": {"$regex": query, "$options": "i"}},
-            {"categoria": {"$regex": query, "$options": "i"}}
+            {"nombre": {REGEX: query, QUERY_REGEX : "i"}},
+            {"pais": {REGEX: query, QUERY_REGEX : "i"}},
+            {"ciudad": {REGEX: query, QUERY_REGEX : "i"}},
+            {"categoria": {REGEX: query, QUERY_REGEX : "i"}}
         ]
     }))
     serialized_events = []
