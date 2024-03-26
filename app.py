@@ -468,4 +468,4 @@ def get_ticket_user():
     return jsonify(cart_items)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
