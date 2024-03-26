@@ -13,6 +13,7 @@ csrf.init_app(app)
 
 # constants
 ERROR_USER_NOT_FOUND= {"error": "User not found."}
+DATE_FORMAT = '%Y-%m-%dT%H:%M'
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('mongodb://localhost:27017/')
@@ -122,7 +123,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora": datetime.strptime(fechaHora, '%Y-%m-%dT%H:%M').isoformat(),
+            "fechaHora": datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "artista": artista,
@@ -135,7 +136,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora":datetime.strptime(fechaHora, '%Y-%m-%dT%H:%M').isoformat(),
+            "fechaHora":datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "equipo1": equipo1,
@@ -147,7 +148,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora": datetime.strptime(fechaHora, '%Y-%m-%dT%H:%M').isoformat(),
+            "fechaHora": datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "categoria": categoria,
