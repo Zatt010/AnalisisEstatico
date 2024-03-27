@@ -176,20 +176,20 @@ def check_user():
 # Ruta para actualizar un usuario existente
 @app.route('/usersUpdate', methods=['PUT'])
 def update_user():
-    id = int(request.args.get('id'))  # Convertir el id a entero
+    user_id = int(request.args.get('id'))  # Convertir el id a entero
     email = request.json['email']
     password = request.json['password']
     role = request.json['role']
-    if collection.find_one({"id": id}):
-        collection.update_one({"id": id}, {"$set": {"email": email, "password": password, "role": role}})
+    if collection.find_one({"id": user_id}):
+        collection.update_one({"id": user_id}, {"$set": {"email": email, "password": password, "role": role}})
         return jsonify({'message': 'Usuario actualizado correctamente'})
     else:
         return jsonify({'message': 'El usuario no existe'})
 # Ruta para eliminar un usuario existente
 @app.route('/usersget', methods=['GET'])
 def get_userid():
-    idu = int(request.args.get('idu')) # Convertir el ID del usuario a un número
-    user = collection1.find_one({'userID': idu})
+    user_id = int(request.args.get('idu')) # Convertir el ID del usuario a un número
+    user = collection1.find_one({'userID': user_id})
     if user:
         user['_id'] = str(user['_id'])
         return jsonify(user)
@@ -199,14 +199,14 @@ def get_userid():
 # Ruta para eliminar un usuario existente
 @app.route('/usersd', methods=['DELETE'])
 def delete_user():
-    id = int(request.args.get('id'))
+    user_id = int(request.args.get('id'))
     user_exists = False
-    if collection1.find_one({"id": id}):
-        collection1.delete_one({"id": id})
+    if collection1.find_one({"id": user_id}):
+        collection1.delete_one({"id": user_id})
         user_exists = True
     # Verifica si el usuario existe en la colección collection
-    if collection.find_one({"id": id}):
-        collection.delete_one({"id": id})
+    if collection.find_one({"id": user_id}):
+        collection.delete_one({"id": user_id})
         user_exists = True
     if user_exists:
         # Retorna la respuesta JSON indicando que el usuario ha sido eliminado correctamente
@@ -327,7 +327,7 @@ def get_events_by_category():
 
 # Ruta para obtener un evento por ID o una lista de IDs
 @app.route('/EventsID', methods=['GET'])
-def get_Event_ID():
+def get_event_id():
     id_events = request.args.get('id_event')  # Obtener los IDs de evento de la URL
     id_list = id_events.split(',')  # Dividir los IDs en una lista
 
@@ -435,7 +435,7 @@ def get_cart_items():
 
 # Ruta para crear un nuevo tickets usuario permanente
 @app.route('/createT_U', methods=['POST'])
-def create_userTickets():
+def create_user_tickets():
     last_ticket = collection5.find_one(sort=[('_id', pymongo.DESCENDING)])
     if last_ticket:
         new_id = last_ticket['_id'] + 1

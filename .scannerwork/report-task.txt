@@ -2,5 +2,5 @@ projectKey=Calidad
 serverUrl=http://localhost:9000
 serverVersion=10.4.1.88267
 dashboardUrl=http://localhost:9000/dashboard?id=Calidad
-ceTaskId=dba49cf6-1680-48b6-856c-bb6daaca6ec8
-ceTaskUrl=http://localhost:9000/api/ce/task?id=dba49cf6-1680-48b6-856c-bb6daaca6ec8
+ceTaskId=9b398fcb-df47-42e9-a2d7-ea0fe9a9b686
+ceTaskUrl=http://localhost:9000/api/ce/task?id=9b398fcb-df47-42e9-a2d7-ea0fe9a9b686
