@@ -81,12 +81,12 @@ def create_user():
 # Ruta para crear datos de usuario
 @app.route('/createUs', methods=['POST'])
 def create_usu():
-    userID = int(request.json['userID'])
+    user_id = int(request.json['userID'])
     nombre_u = request.json['nombre_u']
     nombre_com = request.json['nombre_com']
-    Fecha_N = request.json['Fecha_N']
+    fecha_n = request.json['Fecha_N']
     ci = request.json['ci']
-    profilePic = request.json['profilePic']
+    profile_pic = request.json['profilePic']
     last_event = collection1.find_one(sort=[('_id', pymongo.DESCENDING)])
     if last_event:
         new_id = last_event['_id'] + 1
@@ -94,11 +94,11 @@ def create_usu():
         new_id = 1
     new_user = {
         "_id": new_id,
-        "userID": userID,
-        "profilePic": profilePic,
+        "userID": user_id,
+        "profilePic": profile_pic,
         "nombre_u": nombre_u,
         "nombre_com": nombre_com,
-        "Fecha_N": datetime.strptime(Fecha_N, '%Y-%m-%d').isoformat(),
+        "Fecha_N": datetime.strptime(fecha_n, '%Y-%m-%d').isoformat(),
         "ci": ci
     }
     collection1.insert_one(new_user)
@@ -109,7 +109,7 @@ def create_usu():
 @app.route('/create_event', methods=['POST'])
 def create_event():
     nombre = request.json['nombre']
-    fechaHora = request.json['fechaHora']
+    fecha_hora = request.json['fechaHora']
     pais = request.json['pais']
     ciudad = request.json['ciudad']
     categoria = request.json['categoria']
@@ -125,7 +125,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora": datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
+            "fechaHora": datetime.strptime(fecha_hora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "artista": artista,
@@ -138,7 +138,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora":datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
+            "fechaHora":datetime.strptime(fecha_hora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "equipo1": equipo1,
@@ -150,7 +150,7 @@ def create_event():
         new_event = {
             "cod_E": new_id,
             "nombre": nombre,
-            "fechaHora": datetime.strptime(fechaHora, DATE_FORMAT).isoformat(),
+            "fechaHora": datetime.strptime(fecha_hora, DATE_FORMAT).isoformat(),
             "pais": pais,
             "ciudad": ciudad,
             "categoria": categoria,
@@ -421,15 +421,15 @@ def add_to_cart():
 # Eliminar carrito de compras por userID
 @app.route('/Cart', methods=['DELETE'])
 def delete_cart_items():
-    userID = int(request.args.get('userID'))
-    collection4.delete_many({"userID": userID})
+    user_id = int(request.args.get('userID'))
+    collection4.delete_many({"userID": user_id})
     return jsonify({'message': 'Cart items deleted'})
 
 #mostrar carrito de compras por usuario
 @app.route('/Cart_user', methods=['GET'])
 def get_cart_items():
-    userID = int(request.args.get('userID'))
-    cart_items = list(collection4.find({"userID": userID}))
+    user_id = int(request.args.get('userID'))
+    cart_items = list(collection4.find({"userID": user_id}))
     serialized_items = [{k: v for k, v in item.items() if k != '_id'} for item in cart_items]
     return jsonify(serialized_items)
 
@@ -442,16 +442,16 @@ def create_userTickets():
     else:
         new_id = 1
     
-    userID = int(request.json['userID'])
-    ticketIDs = request.json['ticketID']
+    user_id = int(request.json['userID'])
+    ticket_ids = request.json['ticketID']
     
-    if isinstance(ticketIDs, list):
+    if isinstance(ticket_ids, list):
         # Si ticketID es una lista, crea un nuevo ticket de usuario para cada elemento
-        for ticketID in ticketIDs:
+        for ticket_id in ticket_ids:
             new_user = {
                 "_id": new_id,
-                "userID": userID,
-                "ticketID": ticketID
+                "userID": user_id,
+                "ticketID": ticket_id
             }
             collection5.insert_one(new_user)
             new_id += 1
@@ -459,8 +459,8 @@ def create_userTickets():
         # Si ticketID es un solo valor, crea un único ticket de usuario
         new_user = {
             "_id": new_id,
-            "userID": userID,
-            "ticketID": ticketIDs
+            "userID": user_id,
+            "ticketID": ticket_ids
         }
         collection5.insert_one(new_user)
     
@@ -469,8 +469,8 @@ def create_userTickets():
 #mostrar tickets del usuario
 @app.route('/Ticket_user', methods=['GET'])
 def get_ticket_user():
-    userID = int(request.args.get('userID'))
-    cart_items = list(collection5.find({"userID": userID}))
+    user_id = int(request.args.get('userID'))
+    cart_items = list(collection5.find({"userID": user_id}))
     return jsonify(cart_items)
 
 if __name__ == '__main__':
