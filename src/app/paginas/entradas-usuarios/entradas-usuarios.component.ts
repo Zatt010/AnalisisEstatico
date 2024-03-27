@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../servicio/user-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-entradas-usuarios',
@@ -25,23 +24,23 @@ export class EntradasUsuariosComponent implements OnInit {
 
   loadTicketItems(): void {
     if (this.userId) {
-    this.eventService.getTicket_user(this.userId).subscribe(
-      (response) => {
-        const ticketIDs = response.map((item: any) => item.ticketID.toString());
-        console.log('ticketIDs:', ticketIDs); // Specify the 'any' type for 'item'
-        this.loadTickets(ticketIDs);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+      this.eventService.getTicket_user(this.userId).subscribe({
+        next: (response) => {
+          const ticketIDs = response.map((item: any) => item.ticketID.toString());
+          console.log('ticketIDs:', ticketIDs);
+          this.loadTickets(ticketIDs);
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
     }
   }
 
   loadTickets(ticketIDs: string[]): void {
     const idEventString = ticketIDs.join(',');
-    this.eventService.getTicketID(idEventString).subscribe(
-      (response) => {
+    this.eventService.getTicketID(idEventString).subscribe({
+      next: (response) => {
         const events = response as any[];
         for (const event of events) {
           const id_event = event.id_event;
@@ -54,25 +53,24 @@ export class EntradasUsuariosComponent implements OnInit {
           const eventDetails = {
             id_event: id_event,
             precio: precio,
-            tipo: tipo
-            // Agrega aquí las demás propiedades del evento que necesites
+            tipo: tipo,
           };
 
           this.loadEvent(id_event);
           this.ticketItems1.push(eventDetails);
         }
       },
-      (error) => {
+      error: (error) => {
         console.error(error);
       }
-    );
+    });
   }
 
 
 
   loadEvent(id_event: string): void {
-    this.eventService.getEventID(id_event).subscribe(
-      (response) => {
+    this.eventService.getEventID(id_event).subscribe({
+      next: (response) => {
         console.log('evento buscado:', response);
         const eventCategory = response[0].categoria;
         const eventDetails = this.getEventDetails(eventCategory, response[0]);
@@ -80,11 +78,12 @@ export class EntradasUsuariosComponent implements OnInit {
         console.log('eventDetails:', eventDetails);
         this.ticketItems.push(eventDetails);
       },
-      (error) => {
+      error: (error) => {
         console.error(error);
       }
-    );
+    });
   }
+
 
 
   getEventDetails(category: string, event: any): any {

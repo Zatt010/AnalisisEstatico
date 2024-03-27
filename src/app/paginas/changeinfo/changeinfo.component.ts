@@ -44,19 +44,20 @@ export class ChangeinfoComponent implements OnInit {
     });
   }
 
-  getUserInfo() {
-    if(this.userId){
-    this.userService.getUserinfo(this.userId).subscribe(
-      (response) => {
-        this.userinfo = response;
-        this.populateForm();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  getUserInfo(): void {
+    if (this.userId) {
+      this.userService.getUserinfo(this.userId).subscribe({
+        next: (response: any) => {
+          this.userinfo = response;
+          this.populateForm();
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
     }
   }
+
 
   populateForm() {
     this.miFormulario.setValue({
@@ -87,17 +88,21 @@ export class ChangeinfoComponent implements OnInit {
 
       this.isLoading = true;
       if(this.userId){
-      this.userService.updateUserInfo(this.userId, userData).subscribe(
-        () => {
-          this.isLoading = false;
-          this.isSuccess = true;
-        },
-        (error) => {
-          console.error(error);
-          this.isLoading = false;
-          this.isSuccess = false;
-        }
-      );
+        this.userService.updateUserInfo(this.userId, userData).subscribe({
+          next: () => {
+            this.isLoading = false;
+            this.isSuccess = true;
+          },
+          error: (error) => {
+            console.error(error);
+            this.isLoading = false;
+            this.isSuccess = false;
+          },
+          complete: () => {
+
+          }
+        });
+
       }
     }
   }
